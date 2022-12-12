@@ -1,5 +1,6 @@
 package com.example.itemsAPI.repository.entity;
 
+import com.example.itemsAPI.controller.dto.ItemDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,6 +33,10 @@ public class Item
     }
     public Item() {
     }
+
+    public Item(ItemDto itemDto) {
+    }
+
     public Integer getId()
     {
         return id;

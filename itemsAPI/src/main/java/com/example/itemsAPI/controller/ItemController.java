@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class ItemController{
 
     final ItemService1 itemService1;
+    private ItemService1 itemService;
 
     public ItemController(@Autowired ItemService1 itemService1 )
     {
@@ -33,13 +34,13 @@ public class ItemController{
 
     @GetMapping("/{id}")
     public Item findItemById( @PathVariable Integer id ){
-        return itemService1.findById( id );
+        return itemService.findById( id );
     }
 
     @PutMapping( "/{id}" )
     public Item update( @RequestBody ItemDto itemDto, @PathVariable Integer id )
     {
-        Item item = itemService1.findById( id );
+        Item item = itemService.findById( id );
         item.setName( itemDto.getName() );
         item.setDescription( itemDto.getDescription() );
         item.setImageUrl( itemDto.getImageUrl() );

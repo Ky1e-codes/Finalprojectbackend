@@ -45,4 +45,13 @@ public class ItemDto
     {
         this.imageUrl = imageUrl;
     }
+
+    @Override
+    public String toString() {
+        return "ItemDto{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
 }
