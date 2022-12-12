@@ -18,6 +18,7 @@ public class ItemController{
 
     @GetMapping
     public Iterable<Item> getItems(){
+
         return itemRepository.findAll();
     }
 
