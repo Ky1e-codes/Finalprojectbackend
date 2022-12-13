@@ -8,11 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+//@ItemServiceMySql
 @RequestMapping("/item")
 public class ItemController{
 
     final ItemService1 itemService1;
-    private ItemService1 itemService;
+//    private ItemService1 itemService1;
 
     public ItemController(@Autowired ItemService1 itemService1 )
     {
@@ -33,14 +34,14 @@ public class ItemController{
     }
 
     @GetMapping("/{id}")
-    public Item findItemById( @PathVariable Integer id ){
-        return itemService.findById( id );
+    public Item findById( @PathVariable Integer id ){
+        return itemService1.findById( id );
     }
 
     @PutMapping( "/{id}" )
     public Item update( @RequestBody ItemDto itemDto, @PathVariable Integer id )
     {
-        Item item = itemService.findById( id );
+        Item item = itemService1.findById( id );
         item.setName( itemDto.getName() );
         item.setDescription( itemDto.getDescription() );
         item.setImageUrl( itemDto.getImageUrl() );

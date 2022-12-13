@@ -1,19 +1,20 @@
 package com.example.itemsAPI.service;
 
 import com.example.itemsAPI.repository.entity.Item;
+import org.springframework.stereotype.Service;
+//import com.example.itemsAPI.ItemServiceMySQL;
 
 import java.util.List;
-import java.util.Optional;
-
+@Service
 public interface ItemService1
 {
 
     Item save(Item item );
 
-    void delete( int itemId );
+    void delete( int id );
 
     List<Item> all();
 
-    Optional<Item> findById(int itemId );
+    Item findById(int id );
 
 }

@@ -20,3 +20,11 @@ public class ItemsApiApplication {
 //I don't believe I am connected to git properly
 //----git status reflecting files that I am unsure about
 //----did not add, commit, or push for now
+
+//12/12 --
+///item/all works
+//item/"id", put and post does not work yet
+//Unable to get error in --ItemServiceMySQL--to go away
+// without causing errors in other files
+//Added @repository to itemrepository
+//delete works
