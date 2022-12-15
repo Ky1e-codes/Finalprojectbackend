@@ -28,3 +28,12 @@ public class ItemsApiApplication {
 // without causing errors in other files
 //Added @repository to itemrepository
 //delete works
+
+//12/14--
+//CRUD minus DTO is working
+//The id numbering is off...not sure what is happening
+//with that...but it's at least working
+
+//Tried to add Dto with no success.
+//Started a new file with different code,
+//This file was successful--Finalprojbe --
