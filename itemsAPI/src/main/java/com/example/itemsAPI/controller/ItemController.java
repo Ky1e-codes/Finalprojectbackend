@@ -37,6 +37,13 @@ public class ItemController {
 
     // Build Get All Items REST API
 
+
+    @CrossOrigin
+    @PostMapping
+    public void addItem(@RequestBody Item item) {
+        itemService.addItem(item);
+//        return bookRepository.save(book);
+
     @GetMapping("/all")
     public ResponseEntity<List<ItemDto>> getAllItems(){
         List<ItemDto> items = itemService.getAllItems();

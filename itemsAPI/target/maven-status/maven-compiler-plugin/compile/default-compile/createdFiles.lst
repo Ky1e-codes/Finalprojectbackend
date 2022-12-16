@@ -1,0 +1,9 @@
+com\example\itemsAPI\repository\entity\Item.class
+com\example\itemsAPI\ItemMapper.class
+com\example\itemsAPI\controller\ItemController.class
+com\example\itemsAPI\controller\ResourceNotFoundException.class
+com\example\itemsAPI\ItemsApiApplication.class
+com\example\itemsAPI\dto\ItemDto.class
+com\example\itemsAPI\repository\ItemRepository.class
+com\example\itemsAPI\service\ItemService.class
+com\example\itemsAPI\service\ItemServiceImpl.class
