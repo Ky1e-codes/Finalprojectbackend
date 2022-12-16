@@ -1,83 +1,63 @@
 package com.example.itemsAPI.controller;
 
 //import com.example.itemsAPI.controller.dto.ItemDto;
+import com.example.itemsAPI.dto.ItemDto;
 import com.example.itemsAPI.repository.ItemRepository;
 import com.example.itemsAPI.repository.entity.Item;
 import com.example.itemsAPI.service.ItemService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/item")
 public class ItemController {
 
-    @Autowired
-    private ItemRepository itemRepository;
-    private final ItemService itemService;
+    private ItemService itemService;
 
-    public ItemController(ItemService itemService) {
-
-        this.itemService = itemService;
+    // build create Item REST API
+    @PostMapping
+    public ResponseEntity<ItemDto> createItem(@RequestBody ItemDto item){
+        ItemDto savedItem = itemService.createItem(item);
+        return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public String celebration() {
-        return "Welcome to Items!";
+    // build get Item by id REST API
+
+    @GetMapping("{id}")
+    public ResponseEntity<ItemDto> getItemById(@PathVariable("id") Integer id){
+        ItemDto item = itemService.getItemById(id);
+        return new ResponseEntity<>(item, HttpStatus.OK);
     }
+
+    // Build Get All Items REST API
 
     @GetMapping("/all")
-    public List<Item> getItems() {
-
-        return itemService.getItems();
+    public ResponseEntity<List<ItemDto>> getAllItems(){
+        List<ItemDto> items = itemService.getAllItems();
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Item> getItemById
-            (@PathVariable(value = "id") Integer id)
-            throws ResourceNotFoundException {
-        Item item = itemRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Item not found for this id :: " + id));
-        return ResponseEntity.ok().body(item);
+    // Build Update Item REST API
+    @PutMapping("{id}")
+
+    public ResponseEntity<ItemDto> updateItem(@PathVariable("id") Integer id,
+                                              @RequestBody ItemDto item){
+        item.setId(id);
+        ItemDto updatedItem = itemService.updateItem(item);
+        return new ResponseEntity<>(updatedItem, HttpStatus.OK);
     }
 
-    @PostMapping
-    public void addItem(@RequestBody Item item) {
-        itemService.addItem(item);
-//        return bookRepository.save(book);
-    }
-
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Item> update
-            (@RequestBody Item item,
-             @PathVariable Integer id) {
-        Item update = itemRepository.findById(id)
-                .orElseThrow();
-
-        update.setName(item.getName());
-        update.setDescription(item.getDescription());
-        update.setImageUrl(item.getImageUrl());
-
-        itemRepository.save(update);
-
-        return ResponseEntity.ok(update);
-    }
-
-    @DeleteMapping("/{id}")
-    public Map<String, Boolean> deleteItem(@PathVariable(value = "id") Integer id)
-            throws ResourceNotFoundException {
-        Item item = itemRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Item not found for this id :: " + id));
-
-        itemRepository.delete(item);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return response;
+    // Build Delete Item REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<Integer> deleteItem(@PathVariable("id") Integer id){
+        return itemService.deleteItem(id);
+//        return new ResponseEntity <>("Item successfully deleted!", HttpStatus.OK);
     }
 }
 //import com.example.itemsAPI.controller.dto.ItemDto;

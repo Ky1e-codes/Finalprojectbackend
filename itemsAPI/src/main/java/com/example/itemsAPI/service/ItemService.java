@@ -19,10 +19,6 @@ public interface ItemService {
     ItemDto updateItem(ItemDto item);
 
     ResponseEntity<Integer> deleteItem(Integer id);
-
-    List<Item> getItems();
-
-    void addItem(Item item);
 }
 
 
