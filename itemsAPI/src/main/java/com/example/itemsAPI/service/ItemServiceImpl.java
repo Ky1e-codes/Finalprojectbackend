@@ -63,14 +63,4 @@ public class ItemServiceImpl implements ItemService {
         itemRepository.deleteById(id);
         return null;
     }
-
-    @Override
-    public List<Item> getItems() {
-        return null;
-    }
-
-    @Override
-    public void addItem(Item item) {
-
-    }
 }
