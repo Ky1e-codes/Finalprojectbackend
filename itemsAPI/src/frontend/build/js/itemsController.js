@@ -18,7 +18,7 @@ class ItemsController {
 
     save(name, description, imageUrl){
         const data = { name,  description, imageUrl };
-        
+
         fetch('http://localhost:8080/item', {
         method: 'PUT', // or 'PUT'
         headers: {
@@ -56,7 +56,7 @@ class ItemsController {
         //TODO implement this method
         fetch('http://localhost:8080/item', {
             method: 'DELETE'
-        }) 
+        })
     }
 
     findByItemId(id){

@@ -45,6 +45,7 @@ public class ItemController {
         return ResponseEntity.ok().body(item);
     }
 
+    @CrossOrigin
     @PostMapping
     public void addItem(@RequestBody Item item) {
         itemService.addItem(item);

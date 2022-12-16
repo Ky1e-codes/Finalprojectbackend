@@ -17,7 +17,7 @@ const addItems = (ev)=> { // passing the user clicking event
         // Add the item to the ItemsController
         itemsController.addItem(name, description, imageUrl);
 
-        //saving to the database 
+        //saving to the database
         itemsController.update(name, description, imageUrl);
 
         //findItemById
